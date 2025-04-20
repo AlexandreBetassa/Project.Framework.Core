@@ -10,7 +10,7 @@ namespace Fatec.Store.Framework.Core.Bases.v1.Interfaces
 
         Task<T?> GetByIdAsync(int id);
 
-        Task CreateAsync(T entity);
+        Task<int> CreateAsync(T entity);
 
         Task PatchAsync(int id, Expression<Func<SetPropertyCalls<T>, SetPropertyCalls<T>>> expression);
 

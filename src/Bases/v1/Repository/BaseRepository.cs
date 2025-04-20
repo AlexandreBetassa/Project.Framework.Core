@@ -12,11 +12,17 @@ namespace Fatec.Store.Framework.Core.Bases.v1.Repository
         public DbContext Context { get; } = context;
 
         public async Task<T?> GetByIdAsync(int id) =>
-            await Context.Set<T>()
+            await IncludeAllNavigations(Context.Set<T>())
                 .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id.Equals(id));
+                .FirstOrDefaultAsync(x => x.Id == id);
 
-        public async Task CreateAsync(T entity) => await Context.Set<T>().AddAsync(entity);
+        public async Task<int> CreateAsync(T entity)
+        {
+            await Context.Set<T>().AddAsync(entity);
+            await Context.SaveChangesAsync();
+
+            return entity.Id;
+        }
 
         public async Task PatchAsync(int id, Expression<Func<SetPropertyCalls<T>, SetPropertyCalls<T>>> expression) =>
             await Context.Set<T>()
@@ -28,5 +34,18 @@ namespace Fatec.Store.Framework.Core.Bases.v1.Repository
 
         public async Task SaveChangesAsync() =>
             await Context.SaveChangesAsync();
+
+        private IQueryable<T> IncludeAllNavigations(DbSet<T> dbSet)
+        {
+            var entityType = Context.Model.FindEntityType(typeof(T));
+            var query = dbSet.AsQueryable();
+
+            foreach (var navigation in entityType!.GetNavigations())
+            {
+                query = query.Include(navigation.Name);
+            }
+
+            return query;
+        }
     }
 }
