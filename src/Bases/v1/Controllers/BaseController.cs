@@ -1,4 +1,5 @@
 ﻿using Fatec.Store.Framework.Core.Bases.v1.Exceptions;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -33,6 +34,10 @@ namespace Fatec.Store.Framework.Core.Bases.v1.Controllers
                 return StatusCode(
                     ex.StatusCode,
                     JsonConvert.SerializeObject(ex.Message));
+            }
+            catch (ValidationException ex)
+            {
+                return StatusCode(400, new { ErrorsMessage = ex.Errors.Select(x => x.ErrorMessage) });
             }
             catch (Exception)
             {
