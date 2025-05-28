@@ -13,8 +13,7 @@ namespace Fatec.Store.Framework.Core.Bases.v1.Repository
 
         public async Task<T?> GetByIdAsync(int id) =>
             await IncludeAllNavigations(Context.Set<T>())
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id == id);
+                .FirstOrDefaultAsync(x => x.Id.Equals(id));
 
         public async Task<int> CreateAsync(T entity)
         {
@@ -29,8 +28,12 @@ namespace Fatec.Store.Framework.Core.Bases.v1.Repository
                 .Where(x => x.Id.Equals(id))
                 .ExecuteUpdateAsync(expression);
 
-        public async Task Updateasync(T entity) =>
+        public async Task UpdateAsync(T entity)
+        {
             Context.Set<T>().Update(entity);
+
+            await Context.SaveChangesAsync();
+        }
 
         public async Task SaveChangesAsync() =>
             await Context.SaveChangesAsync();

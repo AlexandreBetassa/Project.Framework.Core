@@ -6,7 +6,7 @@ namespace Fatec.Store.Framework.Core.Bases.v1.Interfaces
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        Task Updateasync(T entity);
+        Task UpdateAsync(T entity);
 
         Task<T?> GetByIdAsync(int id);
 

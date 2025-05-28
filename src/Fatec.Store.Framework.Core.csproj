@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Fatec.Store.Framework.Core</PackageId>
-    <Version>1.0.7</Version>
+    <Version>8.0.3</Version>
     <Authors>Alexandre</Authors>
     <Description>O pacote Fatec.Store.Framework.Core</Description>
 
