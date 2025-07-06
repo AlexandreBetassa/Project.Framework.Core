@@ -13,11 +13,16 @@ namespace Store.Framework.Core.v1.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void InjectAuthenticationSwagger(this IServiceCollection services, string title, string version, string description)
+        internal static void InjectAuthenticationSwagger(this IServiceCollection services, SwaggerSettings swaggerSettings)
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = title, Version = version, Description = description });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = swaggerSettings.Title,
+                    Version = swaggerSettings.Version,
+                    Description = swaggerSettings.Description
+                });
 
                 c.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
                 {
@@ -91,6 +96,7 @@ namespace Store.Framework.Core.v1.Extensions
 
         public static void InjectContext<TContext>(this IServiceCollection services, AppsettingsConfigurations appsettings)
             where TContext : DbContext =>
-            services.AddDbContext<TContext>(options => options.UseSqlServer(appsettings!.Database));
+            services.AddDbContext<TContext>(options =>
+                options.UseSqlServer(appsettings!.Database));
     }
 }

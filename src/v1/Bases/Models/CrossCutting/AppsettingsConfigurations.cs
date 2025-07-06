@@ -6,6 +6,8 @@
 
         public RedisConfiguration RedisConfiguration { get; set; }
 
-        public string Database { get; set; }
+        public SwaggerSettings SwaggerSettings { get; set; }
+
+        internal string Database { get; set; }
     }
 }
