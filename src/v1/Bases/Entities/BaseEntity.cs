@@ -1,4 +1,4 @@
-﻿namespace Store.Framework.Core.Bases.v1.Entities
+﻿namespace Store.Framework.Core.v1.Bases.Entities
 {
     public class BaseEntity
     {

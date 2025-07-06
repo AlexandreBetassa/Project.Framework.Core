@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace Store.Framework.Core.Bases.v1.CommandHandler
+namespace Store.Framework.Core.v1.Bases.CommandHandler
 {
     public abstract class BaseCommandHandler<TCommand, TResponse>
         : IRequestHandler<TCommand, TResponse>

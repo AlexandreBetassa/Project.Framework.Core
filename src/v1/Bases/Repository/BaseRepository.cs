@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using Store.Framework.Core.Bases.v1.Entities;
-using Store.Framework.Core.Bases.v1.Interfaces;
+using Store.Framework.Core.v1.Bases.Entities;
+using Store.Framework.Core.v1.Bases.Interfaces;
 using System.Linq.Expressions;
 
-namespace Store.Framework.Core.Bases.v1.Repository
+namespace Store.Framework.Core.v1.Bases.Repository
 {
     public class BaseRepository<T>(DbContext context) : IRepository<T>
         where T : BaseEntity
