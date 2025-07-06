@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 
-namespace Fatec.Store.Framework.Core.Bases.v1.Injections
+namespace Store.Framework.Core.Bases.v1.Injections
 {
     public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators) : IPipelineBehavior<TRequest, TResponse>
      where TRequest : IRequest<TResponse>

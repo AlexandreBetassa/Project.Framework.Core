@@ -5,12 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <PackageId>Fatec.Store.Framework.Core</PackageId>
-    <Version>8.0.3</Version>
+    <PackageId>Store.Framework.Core</PackageId>
+    <Version>8.0.4</Version>
     <Authors>Alexandre</Authors>
-    <Description>O pacote Fatec.Store.Framework.Core</Description>
+    <Description>O pacote Store.Framework.Core</Description>
 
-    <RepositoryUrl>https://github.com/AlexandreBetassa/Fatec.Store.Framework.Core</RepositoryUrl>
+    <RepositoryUrl>https://github.com/AlexandreBetassa/Store.Framework.Core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 

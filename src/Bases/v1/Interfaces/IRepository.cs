@@ -1,8 +1,8 @@
-﻿using Fatec.Store.Framework.Core.Bases.v1.Entities;
-using Microsoft.EntityFrameworkCore.Query;
+﻿using Microsoft.EntityFrameworkCore.Query;
+using Store.Framework.Core.Bases.v1.Entities;
 using System.Linq.Expressions;
 
-namespace Fatec.Store.Framework.Core.Bases.v1.Interfaces
+namespace Store.Framework.Core.Bases.v1.Interfaces
 {
     public interface IRepository<T> where T : BaseEntity
     {

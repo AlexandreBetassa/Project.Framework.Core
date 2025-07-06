@@ -1,10 +1,10 @@
-﻿using Fatec.Store.Framework.Core.Bases.v1.Entities;
-using Fatec.Store.Framework.Core.Bases.v1.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
+using Store.Framework.Core.Bases.v1.Entities;
+using Store.Framework.Core.Bases.v1.Interfaces;
 using System.Linq.Expressions;
 
-namespace Fatec.Store.Framework.Core.Bases.v1.Repository
+namespace Store.Framework.Core.Bases.v1.Repository
 {
     public class BaseRepository<T>(DbContext context) : IRepository<T>
         where T : BaseEntity

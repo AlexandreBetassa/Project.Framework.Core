@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using FluentValidation;
 
-namespace Fatec.Store.Framework.Core.Bases.v1.Injections
+namespace Store.Framework.Core.Bases.v1.Injections
 {
     public static class DependencyInjectionExtensions
     {

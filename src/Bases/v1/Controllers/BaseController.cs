@@ -1,12 +1,12 @@
-﻿using Fatec.Store.Framework.Core.Bases.v1.Exceptions;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Store.Framework.Core.Bases.v1.Exceptions;
 using System.Net;
 
-namespace Fatec.Store.Framework.Core.Bases.v1.Controllers
+namespace Store.Framework.Core.Bases.v1.Controllers
 {
     public class BaseController<T> : ControllerBase
     {
