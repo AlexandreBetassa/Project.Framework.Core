@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
-using Store.Framework.Core.v1.Bases.Entities;
+using Project.Framework.Core.v1.Bases.Entities;
 using System.Linq.Expressions;
 
-namespace Store.Framework.Core.v1.Bases.Interfaces
+namespace Project.Framework.Core.v1.Bases.Interfaces
 {
     public interface IRepository<T> where T : BaseEntity
     {

@@ -6,10 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Store.Framework.Core.v1.Bases.Models.CrossCutting;
-using Store.Framework.Core.v1.Enums;
+using Project.Framework.Core.v1.Bases.Models.CrossCutting;
+using Project.Framework.Core.v1.Enums;
 using System.Text;
-namespace Store.Framework.Core.v1.Extensions
+namespace Project.Framework.Core.v1.Extensions
 {
     public static class ServiceCollectionExtensions
     {

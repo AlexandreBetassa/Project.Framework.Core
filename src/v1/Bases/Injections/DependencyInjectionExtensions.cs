@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Store.Framework.Core.v1.Bases.Injections
+namespace Project.Framework.Core.v1.Bases.Injections
 {
     public static class DependencyInjectionExtensions
     {

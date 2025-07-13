@@ -5,10 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <PackageId>Store.Framework.Core</PackageId>
-    <Version>8.0.4</Version>
+    <PackageId>Project.Framework.Core</PackageId>
+    <Version>8.0.5</Version>
     <Authors>Alexandre</Authors>
-    <Description>O pacote Store.Framework.Core</Description>
+    <Description>O pacote Project.Framework.Core</Description>
 
     <RepositoryUrl>https://github.com/AlexandreBetassa/Store.Framework.Core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

@@ -3,10 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Store.Framework.Core.v1.Bases.Exceptions;
+using Project.Framework.Core.v1.Bases.Exceptions;
 using System.Net;
 
-namespace Store.Framework.Core.v1.Bases.Controllers
+namespace Project.Framework.Core.v1.Bases.Controllers
 {
     public class BaseController<T> : ControllerBase
     {

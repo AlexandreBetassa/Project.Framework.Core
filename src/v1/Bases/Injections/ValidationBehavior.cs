@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 
-namespace Store.Framework.Core.v1.Bases.Injections
+namespace Project.Framework.Core.v1.Bases.Injections
 {
     public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators) : IPipelineBehavior<TRequest, TResponse>
      where TRequest : IRequest<TResponse>

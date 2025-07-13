@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Store.Framework.Core.v1.Bases.Injections;
-using Store.Framework.Core.v1.Bases.Models.CrossCutting;
-using Store.Framework.Core.v1.Extensions;
+using Project.Framework.Core.v1.Bases.Injections;
+using Project.Framework.Core.v1.Bases.Models.CrossCutting;
+using Project.Framework.Core.v1.Extensions;
 using System.Reflection;
 
-namespace Store.Framework.Core.v1.IoC
+namespace Project.Framework.Core.v1.IoC
 {
     public abstract class BaseBootstrapper(WebApplicationBuilder builder)
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Store.Framework.Core.v1.Enums
+namespace Project.Framework.Core.v1.Enums
 {
     public enum AccessPoliciesEnum
     {
