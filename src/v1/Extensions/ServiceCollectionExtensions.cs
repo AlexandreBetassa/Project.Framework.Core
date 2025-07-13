@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Project.Framework.Core.v1.Bases.Models.CrossCutting;
@@ -52,16 +51,6 @@ namespace Project.Framework.Core.v1.Extensions
                     }
                  });
             });
-        }
-
-        public static TSettings AddConfigurations<TSettings>(this IServiceCollection services, WebApplicationBuilder builder)
-            where TSettings : AppsettingsConfigurations
-        {
-            var configurations = builder.Configuration.GetSection(typeof(TSettings).Name);
-            services.Configure<TSettings>(nameof(TSettings), configurations);
-            services.AddTransient(sp => sp.GetRequiredService<IOptions<TSettings>>().Value);
-
-            return configurations!.Get<TSettings>()!;
         }
 
         public static void InjectRedis(this IServiceCollection services, AppsettingsConfigurations appsettings) =>

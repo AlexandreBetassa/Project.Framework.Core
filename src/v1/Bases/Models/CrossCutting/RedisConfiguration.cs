@@ -2,7 +2,7 @@
 {
     public class RedisConfiguration
     {
-        internal string Server { get; set; }
+        public string Server { get; set; }
 
         public int ExpirationInMinutes { get; set; }
     }

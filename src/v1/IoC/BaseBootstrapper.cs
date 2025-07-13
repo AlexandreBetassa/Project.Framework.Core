@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Project.Framework.Core.v1.Bases.Injections;
 using Project.Framework.Core.v1.Bases.Models.CrossCutting;
@@ -9,17 +10,17 @@ using System.Reflection;
 
 namespace Project.Framework.Core.v1.IoC
 {
-    public abstract class BaseBootstrapper(WebApplicationBuilder builder)
+    public abstract class BaseBootstrapper<TAppSettings>(WebApplicationBuilder builder)
+        where TAppSettings : AppsettingsConfigurations
     {
         protected IServiceCollection Services = builder.Services;
-        protected static AppsettingsConfigurations Appsettings;
+        protected static TAppSettings? Appsettings;
         private readonly string _mediatorLicenseKey = "eyJhbGciOiJSUzI1NiIsImtpZCI6Ikx1Y2t5UGVubnlTb2Z0d2FyZUxpY2Vuc2VLZXkvYmJiMTNhY2I1OTkwNGQ4OWI0Y2IxYzg1ZjA4OGNjZjkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2x1Y2t5cGVubnlzb2Z0d2FyZS5jb20iLCJhdWQiOiJMdWNreVBlbm55U29mdHdhcmUiLCJleHAiOiIxNzgzMjk2MDAwIiwiaWF0IjoiMTc1MTgyNzQ3MiIsImFjY291bnRfaWQiOiIwMTk3ZTEwYWRjNzU3YWNhYWIzMWMyNmQzODE4ZTBlYyIsImN1c3RvbWVyX2lkIjoiY3RtXzAxanpnZ3ZyNmY2em1nejExZTYzMWMwNGVlIiwic3ViX2lkIjoiLSIsImVkaXRpb24iOiIwIiwidHlwZSI6IjIifQ.hQZ7sapBzGr78oJ63lUJc3hQeoHLT2fqZs88C3sRCHp8OiM-qzysw7bYhr4GNQIIeVUJGUmDShZfWMdSWzsisU773csUIIhvoo7nSWMoof1efnM0KL1SnSGY_RudVruOUEJydQ8jVq97Lw6RpIbUNvSS2BP1yL-ZBL8lZD4OAHeU44thhhxsY0LVyljUDmn3JjCZjPYenJ4sz44Xfa1HCVykAJzbGi3gE2L81wQdVfO_NJuARNhpKksHRlgBKIbuuz1ruLM1GXruCAZWiR8hZAbfgkpISdVMOcwypUGpnaCYn-PtTFBZdPkpKRaUAlTLyPv5X1ckwY5cnZlZ4KQXDA";
 
         public abstract void InjectDependencies();
 
-        public static TBootstrapper CreateBootstrapper<TBootstrapper, TAppSettings>(WebApplicationBuilder builder)
-            where TBootstrapper : BaseBootstrapper
-            where TAppSettings : AppsettingsConfigurations
+        public static TBootstrapper CreateBootstrapper<TBootstrapper>(WebApplicationBuilder builder)
+            where TBootstrapper : BaseBootstrapper<TAppSettings>
         {
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -28,9 +29,12 @@ namespace Project.Framework.Core.v1.IoC
                 .GetConstructor(new[] { typeof(WebApplicationBuilder) })!
                 .Invoke(new object[] { builder }) as TBootstrapper;
 
-            Appsettings = bootstrapper!.Services.AddConfigurations<TAppSettings>(builder);
+            var configurations = builder.Configuration.GetSection(typeof(TAppSettings).Name);
+            bootstrapper!.Services.Configure<TAppSettings>(configurations);
 
-            if (Appsettings.JwtConfiguration is not null)
+            Appsettings = configurations.Get<TAppSettings>();
+
+            if (Appsettings!.JwtConfiguration is not null)
             {
                 bootstrapper.InjectAuthenticationSwagger();
                 bootstrapper.ConfigureAuthentication();

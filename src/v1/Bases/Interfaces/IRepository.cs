@@ -8,11 +8,11 @@ namespace Project.Framework.Core.v1.Bases.Interfaces
     {
         Task UpdateAsync(T entity);
 
-        Task<T?> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(string id);
 
-        Task<int> CreateAsync(T entity);
+        Task<Guid> CreateAsync(T entity);
 
-        Task PatchAsync(int id, Expression<Func<SetPropertyCalls<T>, SetPropertyCalls<T>>> expression);
+        Task PatchAsync(string id, Expression<Func<SetPropertyCalls<T>, SetPropertyCalls<T>>> expression);
 
         Task SaveChangesAsync();
     }

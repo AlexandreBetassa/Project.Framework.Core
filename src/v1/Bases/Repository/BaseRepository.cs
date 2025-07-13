@@ -11,11 +11,11 @@ namespace Project.Framework.Core.v1.Bases.Repository
     {
         public DbContext Context { get; } = context;
 
-        public async Task<T?> GetByIdAsync(int id) =>
+        public async Task<T?> GetByIdAsync(string id) =>
             await IncludeAllNavigations(Context.Set<T>())
                 .FirstOrDefaultAsync(x => x.Id.Equals(id));
 
-        public async Task<int> CreateAsync(T entity)
+        public async Task<Guid> CreateAsync(T entity)
         {
             await Context.Set<T>().AddAsync(entity);
             await Context.SaveChangesAsync();
@@ -23,7 +23,7 @@ namespace Project.Framework.Core.v1.Bases.Repository
             return entity.Id;
         }
 
-        public async Task PatchAsync(int id, Expression<Func<SetPropertyCalls<T>, SetPropertyCalls<T>>> expression) =>
+        public async Task PatchAsync(string id, Expression<Func<SetPropertyCalls<T>, SetPropertyCalls<T>>> expression) =>
             await Context.Set<T>()
                 .Where(x => x.Id.Equals(id))
                 .ExecuteUpdateAsync(expression);
