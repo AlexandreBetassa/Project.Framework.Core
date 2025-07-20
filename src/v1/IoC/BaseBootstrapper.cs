@@ -15,7 +15,6 @@ namespace Project.Framework.Core.v1.IoC
     {
         protected IServiceCollection Services = builder.Services;
         protected static TAppSettings? Appsettings;
-        private readonly string _mediatorLicenseKey = "eyJhbGciOiJSUzI1NiIsImtpZCI6Ikx1Y2t5UGVubnlTb2Z0d2FyZUxpY2Vuc2VLZXkvYmJiMTNhY2I1OTkwNGQ4OWI0Y2IxYzg1ZjA4OGNjZjkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2x1Y2t5cGVubnlzb2Z0d2FyZS5jb20iLCJhdWQiOiJMdWNreVBlbm55U29mdHdhcmUiLCJleHAiOiIxNzgzMjk2MDAwIiwiaWF0IjoiMTc1MTgyNzQ3MiIsImFjY291bnRfaWQiOiIwMTk3ZTEwYWRjNzU3YWNhYWIzMWMyNmQzODE4ZTBlYyIsImN1c3RvbWVyX2lkIjoiY3RtXzAxanpnZ3ZyNmY2em1nejExZTYzMWMwNGVlIiwic3ViX2lkIjoiLSIsImVkaXRpb24iOiIwIiwidHlwZSI6IjIifQ.hQZ7sapBzGr78oJ63lUJc3hQeoHLT2fqZs88C3sRCHp8OiM-qzysw7bYhr4GNQIIeVUJGUmDShZfWMdSWzsisU773csUIIhvoo7nSWMoof1efnM0KL1SnSGY_RudVruOUEJydQ8jVq97Lw6RpIbUNvSS2BP1yL-ZBL8lZD4OAHeU44thhhxsY0LVyljUDmn3JjCZjPYenJ4sz44Xfa1HCVykAJzbGi3gE2L81wQdVfO_NJuARNhpKksHRlgBKIbuuz1ruLM1GXruCAZWiR8hZAbfgkpISdVMOcwypUGpnaCYn-PtTFBZdPkpKRaUAlTLyPv5X1ckwY5cnZlZ4KQXDA";
 
         public abstract void InjectDependencies();
 
@@ -49,7 +48,6 @@ namespace Project.Framework.Core.v1.IoC
         {
             Services.AddMediatR(cfg =>
             {
-                cfg.LicenseKey = _mediatorLicenseKey;
                 cfg.RegisterServicesFromAssembly(type.Assembly);
                 cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             });
@@ -59,7 +57,6 @@ namespace Project.Framework.Core.v1.IoC
         {
             Services.AddAutoMapper(opt =>
             {
-                opt.LicenseKey = _mediatorLicenseKey;
                 opt.AddMaps(assembly);
             });
         }

@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Project.Framework.Core.v1.Bases.Models.CrossCutting;
 using Project.Framework.Core.v1.Enums;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
 namespace Project.Framework.Core.v1.Extensions
 {
@@ -20,6 +21,8 @@ namespace Project.Framework.Core.v1.Extensions
                     Version = swaggerSettings.Version,
                     Description = swaggerSettings.Description
                 });
+
+                AddSwaggerDocumentation(c);
 
                 c.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
                 {
@@ -49,6 +52,17 @@ namespace Project.Framework.Core.v1.Extensions
                     }
                  });
             });
+        }
+
+        private static void AddSwaggerDocumentation(SwaggerGenOptions c)
+        {
+            var baseDirectory = AppContext.BaseDirectory;
+            var xmlFiles = Directory.GetFiles(baseDirectory, "*.xml", SearchOption.TopDirectoryOnly);
+
+            foreach (var xmlFile in xmlFiles)
+            {
+                c.IncludeXmlComments(xmlFile);
+            }
         }
 
         public static void InjectRedis(this IServiceCollection services, AppsettingsConfigurations appsettings) =>

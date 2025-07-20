@@ -1,4 +1,6 @@
-﻿namespace Project.Framework.Core.v1.Bases.Models.CrossCutting
+﻿using Newtonsoft.Json;
+
+namespace Project.Framework.Core.v1.Bases.Models.CrossCutting
 {
     public class AppsettingsConfigurations
     {
