@@ -6,11 +6,11 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Project.Framework.Core</PackageId>
-    <Version>8.0.5</Version>
+    <Version>8.0.1</Version>
     <Authors>Alexandre</Authors>
     <Description>O pacote Project.Framework.Core</Description>
 
-    <RepositoryUrl>https://github.com/AlexandreBetassa/Store.Framework.Core</RepositoryUrl>
+    <RepositoryUrl>https://github.com/AlexandreBetassa/Project.Framework.Core</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
