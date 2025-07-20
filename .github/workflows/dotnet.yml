@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-            fetch-depth: 0
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -38,8 +38,17 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --configuration Release
 
-      - name: Pack with GitVersion
-        run: dotnet pack --no-build --configuration Release -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersion }}
+      - name: Combine version
+        id: version
+        run: |
+            dotnet_version=$(dotnet --version)
+            dotnet_major=${dotnet_version%%.*}
+            git_version=${{ steps.gitversion.outputs.minor }}.${{ steps.gitversion.outputs.patch }}
+            version="${dotnet_major}.${git_version}"
+            echo "full_version=$version" >> $GITHUB_OUTPUT
+
+      - name: Pack project with combined version
+        run: dotnet pack -c Release /p:Version=${{ steps.version.outputs.full_version }}
 
       - name: Publish package
         run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://nuget.pkg.github.com/AlexandreBetassa/index.json
