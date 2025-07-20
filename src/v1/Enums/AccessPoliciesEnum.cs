@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Fatec.Store.Framework.Core.Enums
+namespace Project.Framework.Core.v1.Enums
 {
     public enum AccessPoliciesEnum
     {

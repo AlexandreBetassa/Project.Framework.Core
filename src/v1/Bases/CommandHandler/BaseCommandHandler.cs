@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace Fatec.Store.Framework.Core.Bases.v1.CommandHandler
+namespace Project.Framework.Core.v1.Bases.CommandHandler
 {
     public abstract class BaseCommandHandler<TCommand, TResponse>
         : IRequestHandler<TCommand, TResponse>
