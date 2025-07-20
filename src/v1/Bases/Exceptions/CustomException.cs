@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Fatec.Store.Framework.Core.Bases.v1.Exceptions
+namespace Project.Framework.Core.v1.Bases.Exceptions
 {
     public class CustomException(HttpStatusCode statusCode, string message) : Exception(message)
     {
