@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Project.Framework.Core</PackageId>
-    <Version>8.0.1</Version>
+    <Version>$(GitVersion_NuGetVersion)</Version>
     <Authors>Alexandre</Authors>
     <Description>O pacote Project.Framework.Core</Description>
 
