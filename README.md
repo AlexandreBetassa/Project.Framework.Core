@@ -7,3 +7,5 @@ Automação com GitHub Actions para build, montagem do pacote e push para github
 
 ## Próximas implementações
 Implementação genérica para utilização de Redis
+
+## Link para Github Packages: https://github.com/AlexandreBetassa/Project.Framework.Core/pkgs/nuget/Project.Framework.Core
